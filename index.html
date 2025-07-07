@@ -5,171 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AMY SU</title>
   <style>
-    /* Reset and base styles */
-    * {
-      box-sizing: border-box;
+    /* Neutral Japandi colors */
+    :root {
+      --background: #f7f5f0;
+      --text-color: #333333;
+      --banner-bg: #a9a9a2;
+      --accent: #b07a6f;
+      --input-bg: #f3f1ed;
+      --input-border: #d6ccc2;
+      --input-focus-shadow: rgba(176, 122, 111, 0.3);
     }
     body {
       margin: 0;
-      font-family: Georgia, serif;
-      background-color: #f5f2ea; /* light beige */
-      color: #4a4a43; /* dark clay */
-      scroll-behavior: smooth;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
+      background-color: var(--background);
+      color: var(--text-color);
     }
-
-    /* Banner / header */
     header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #a2b5aa; /* sage */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    header h1 {
-      font-size: 3rem;
-      margin: 0;
-      color: #3d3a34; /* darker clay */
+      background-color: var(--banner-bg);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 3.5rem;
+      font-weight: bold;
       letter-spacing: 0.1em;
+      user-select: none;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
     }
-
-    /* Navigation tabs */
     nav {
       display: flex;
-      gap: 30px;
+      justify-content: center;
+      background-color: var(--banner-bg);
+      padding: 10px 0;
+      gap: 40px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
     }
-    nav a {
-      text-decoration: none;
-      color: #3d3a34;
-      font-weight: bold;
-      font-size: 1.1rem;
-      padding: 8px 14px;
-      border-radius: 6px;
-      background-color: transparent;
-      border: 2px solid transparent;
+    nav button {
+      background: none;
+      border: none;
+      color: white;
       cursor: pointer;
-      transition: background-color 0.3s, border-color 0.3s;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
+      transition: color 0.3s;
     }
-    nav a:hover {
-      background-color: #e6e2d3; /* beige */
-      border-color: #7a7266; /* clay */
+    nav button:hover {
+      color: var(--accent);
     }
-
-    /* Sections */
     main {
-      padding-top: 110px; /* space for fixed header */
       max-width: 900px;
-      margin: 0 auto;
+      margin: 40px auto;
+      padding: 0 20px 80px;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
     }
     section {
-      padding: 60px 20px;
-      border-bottom: 1px solid #d6d2c4;
-      min-height: 80vh;
+      margin-bottom: 80px;
     }
-    section:last-child {
-      border-bottom: none;
-    }
-    section h2 {
-      font-size: 2.5rem;
+    h2 {
+      font-size: 2.4rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
       margin-bottom: 20px;
-      color: #3d3a34;
-      letter-spacing: 0.05em;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
     }
-    section p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      max-width: 700px;
-    }
-
-    /* Contact form */
+    /* Contact form styling */
     form {
-      max-width: 700px;
+      max-width: 600px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
     }
     form input,
     form textarea {
-      background-color: #e6e2d3; /* light beige */
-      border: none;
-      padding: 14px 18px;
-      font-size: 1rem;
+      background-color: var(--input-bg);
+      border: 1px solid var(--input-border);
+      padding: 12px;
+      margin-bottom: 15px;
       border-radius: 6px;
-      font-family: Georgia, serif;
+      font-size: 1rem;
+      color: var(--text-color);
       resize: vertical;
-      color: #4a4a43;
-      box-shadow: inset 0 0 5px #ccc9c2;
-      transition: box-shadow 0.3s ease;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
     }
     form input:focus,
     form textarea:focus {
       outline: none;
-      box-shadow: inset 0 0 8px #7a7266;
-      background-color: #f0eee6;
-    }
-    form textarea {
-      min-height: 120px;
+      border-color: var(--accent);
+      box-shadow: 0 0 5px var(--input-focus-shadow);
     }
     form button {
-      align-self: flex-start;
-      padding: 12px 28px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: #f5f2ea; /* beige */
-      background-color: #7a7266; /* clay */
+      background-color: var(--accent);
+      color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
+      padding: 14px 20px;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      align-self: flex-start;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
     }
     form button:hover {
-      background-color: #a2b5aa; /* sage */
-      color: #3d3a34;
+      background-color: var(--banner-bg);
+      color: var(--text-color);
+    }
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>AMY SU</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <header>AMY SU</header>
+  <nav>
+    <button onclick="document.getElementById('about').scrollIntoView()">About</button>
+    <button onclick="document.getElementById('work').scrollIntoView()">Work</button>
+    <button onclick="document.getElementById('contact').scrollIntoView()">Contact</button>
+  </nav>
 
   <main>
     <section id="about">
       <h2>About</h2>
-      <p>
-        <!-- Replace this with your About content -->
-        Welcome to my Japandi-inspired site. Here I combine minimalist Japanese design with cozy Scandinavian warmth to create a calm and chic experience.
-      </p>
+      <p>Welcome to my Japandi-inspired website! Here you'll find a clean, modern aesthetic blending Japanese minimalism with Scandinavian warmth and natural textures.</p>
     </section>
 
     <section id="work">
       <h2>Work</h2>
-      <p>
-        <!-- Replace this with your Work content -->
-        Here’s a showcase of some projects and pieces I have worked on, blending aesthetics and function seamlessly.
-      </p>
+      <p>Here I showcase my projects, design work, and creative endeavors that reflect a thoughtful balance of form and function.</p>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <form>
-        <input type="text" name="name" placeholder="Name" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" placeholder="Message" required></textarea>
+      <form action="https://formspree.io/f/mwpbdvqj" method="POST">
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Message"
+          rows="5"
+          required
+        ></textarea>
         <button type="submit">Send</button>
       </form>
     </section>
   </main>
-
 </body>
 </html>
