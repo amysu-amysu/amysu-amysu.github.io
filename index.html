@@ -11,7 +11,8 @@
       font-family: Palatino, serif;
       background-color: #f5f3ec; /* soft beige */
       color: #2f3e46; /* dark forest green */
-      cursor: none; /* hide default cursor */
+      /* keep default cursor visible */
+      cursor: default;
       overflow-x: hidden;
     }
     /* Banner */
@@ -65,19 +66,21 @@
       min-height: 600px; /* twice as long */
       margin-bottom: 40px;
       position: relative;
+      align-items: flex-start; /* align top */
     }
-    /* Vertical section headers */
+    /* Vertical section headers with upright letters stacked vertically */
     section h2 {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 2.5rem;
+      writing-mode: vertical-lr; /* letters top to bottom */
+      font-size: 3rem;
       font-weight: 700;
       color: #52796f; /* muted green */
       margin: 0 20px 0 0;
-      padding-top: 40px;
+      padding-top: 10px;
       text-transform: uppercase;
       user-select: none;
       flex-shrink: 0;
+      letter-spacing: 0.2em;
+      line-height: 1.2;
     }
     /* About section layout */
     #about .content {
@@ -194,6 +197,7 @@
       transform: translate(-50%, -50%);
       mix-blend-mode: screen;
       z-index: 2000;
+      display: block;
     }
     .sparkle {
       position: absolute;
@@ -236,33 +240,33 @@
 
 <main>
   <section id="about">
-    <h2>ABOUT</h2>
+    <h2>
+      A<br />B<br />O<br />U<br />T
+    </h2>
     <div class="content">
       <div class="image-container" aria-label="About me image with revolving door effect" role="img" tabindex="0">
         <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=250&q=80" alt="Amy Su smiling portrait" class="front" />
         <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=250&q=80" alt="Amy Su casual portrait" class="back" />
       </div>
       <div class="text">
-        <p>Welcome! I’m Amy Su, a creative soul inspired by minimal Japandi aesthetics. My work blends simplicity with warmth and natural textures.</p>
-        <p>I focus on clean design, natural materials, and soft earthy tones to create spaces and visuals that feel calm and elegant.</p>
+        <p>Hello! I'm Amy, a creative designer with a passion for Japandi minimalism. I combine modern aesthetics with warm natural tones to craft elegant experiences. Welcome to my portfolio.</p>
       </div>
     </div>
   </section>
 
   <section id="work">
-    <h2>WORK</h2>
+    <h2>
+      W<br />O<br />R<br />K
+    </h2>
     <div class="content">
-      <p>Here you will find a curated selection of my projects that showcase my approach to design and creativity.</p>
-      <ul>
-        <li>Project One — A minimal branding identity</li>
-        <li>Project Two — Interior design with Japandi influence</li>
-        <li>Project Three — Website design with a focus on user experience</li>
-      </ul>
+      <p>Here you'll find some of my recent projects, blending clean lines with organic elements. I specialize in web design, branding, and illustration that reflect balance and simplicity.</p>
     </div>
   </section>
 
   <section id="contact">
-    <h2>CONTACT</h2>
+    <h2>
+      C<br />O<br />N<br />T<br />A<br />C<br />T
+    </h2>
     <div class="content">
       <form action="https://formspree.io/f/mwpbdvqj" method="POST">
         <input type="text" name="name" placeholder="Name" required />
@@ -282,7 +286,6 @@
 </div>
 
 <script>
-  // Sparkler cursor follow mouse
   const sparkler = document.getElementById('sparkler');
   window.addEventListener('mousemove', e => {
     sparkler.style.left = e.clientX + 'px';
