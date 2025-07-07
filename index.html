@@ -6,13 +6,13 @@
   <title>AMY SU</title>
   <style>
     :root {
-      --background: #f7f5f0;
-      --text-color: #333333;
-      --banner-bg: #a9a9a2;
-      --accent: #b07a6f;
-      --input-bg: #f3f1ed;
-      --input-border: #d6ccc2;
-      --input-focus-shadow: rgba(176, 122, 111, 0.3);
+      --background: #f7f5f0; /* soft beige */
+      --text-color: #3a3a3a; /* dark gray for less harsh than black */
+      --banner-bg: #2C5F2D; /* Japanese forest green */
+      --accent: #c9a67a; /* warm terracotta-beige */
+      --input-bg: #f3f1ed; /* very light beige */
+      --input-border: #e0d7c6; /* faded border */
+      --input-focus-shadow: rgba(201, 166, 122, 0.3); /* soft accent shadow */
     }
     body {
       margin: 0;
@@ -70,13 +70,15 @@
       align-items: flex-start;
       gap: 30px;
       position: relative;
-      padding-left: 60px; /* create space for the vertical header */
+      padding-left: 60px; /* space for vertical header */
+
+      min-height: 600px; /* doubled height */
     }
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    /* Align vertical headers flush left of viewport */
+    /* Vertical headers flush left */
     section h2 {
       writing-mode: vertical-rl;
       text-orientation: mixed;
@@ -90,23 +92,20 @@
       font-weight: 700;
       position: fixed;
       left: 20px;
-      /* align vertically with each section */
-      top: 0;
       font-family: 'Palatino Linotype', 'Palatino', serif;
       letter-spacing: 0.15em;
-      height: auto;
       max-height: 80vh;
       overflow: visible;
+      top: 0;
     }
-    /* Adjust each header's vertical position */
     #about h2 {
-      top: 140px; /* header(80) + nav(50) + margin */
+      top: 140px;
     }
     #work h2 {
-      top: 340px;
+      top: 440px;
     }
     #contact h2 {
-      top: 540px;
+      top: 740px;
     }
     section div.content {
       flex: 1;
@@ -116,6 +115,7 @@
       line-height: 1.6;
       margin-top: 0;
       font-family: 'Palatino Linotype', 'Palatino', serif;
+      color: var(--text-color);
     }
     form {
       max-width: 600px;
@@ -162,7 +162,6 @@
       scroll-behavior: smooth;
     }
     @media (max-width: 768px) {
-      /* On smaller screens, reset fixed headers */
       section h2 {
         position: static;
         writing-mode: horizontal-tb;
@@ -173,6 +172,7 @@
       section {
         padding-left: 0;
         flex-direction: column;
+        min-height: auto;
       }
     }
   </style>
