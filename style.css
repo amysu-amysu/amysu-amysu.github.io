@@ -1,10 +1,45 @@
+/* Basic page styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  color: #333333;
-  margin: 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  margin: 0;
+  padding: 20px;
 }
 
+/* Header style */
 h1 {
-  color: #0066cc;
+  color: #005f73;
+  text-align: center;
+}
+
+/* Paragraph style */
+p {
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+/* Link style */
+a {
+  color: #0a9396;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Add a simple button style */
+button {
+  background-color: #0a9396;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #007f7f;
 }
