@@ -5,248 +5,227 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AMY SU</title>
   <style>
-    :root {
-      --background: #f7f5f0; /* soft beige */
-      --text-color: #3a3a3a; /* dark gray for less harsh than black */
-      --banner-bg: #2C5F2D; /* Japanese forest green */
-      --accent: #c9a67a; /* warm terracotta-beige */
-      --input-bg: #f3f1ed; /* very light beige */
-      --input-border: #e0d7c6; /* faded border */
-      --input-focus-shadow: rgba(201, 166, 122, 0.3); /* soft accent shadow */
-    }
+    /* General styles */
     body {
       margin: 0;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
-      background-color: var(--background);
-      color: var(--text-color);
+      font-family: Palatino, serif;
+      background-color: #f5f3ec; /* soft beige */
+      color: #2f3e46; /* dark forest green */
+      cursor: none; /* hide default cursor */
+      overflow-x: hidden;
     }
+    /* Banner */
     header {
-      background-color: var(--banner-bg);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      font-size: 5rem;
-      font-weight: bold;
+      background-color: #2f4f4f; /* japanese forest green */
+      color: #f5f3ec;
+      padding: 30px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 3.5rem;
       letter-spacing: 0.2em;
-      user-select: none;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
+      margin: 0;
       text-transform: uppercase;
     }
     nav {
       display: flex;
-      justify-content: center;
-      background-color: var(--banner-bg);
-      padding: 10px 0;
-      gap: 40px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
+      gap: 1.5rem;
     }
     nav button {
-      background: none;
+      background: transparent;
       border: none;
-      color: white;
+      color: #cad2c5; /* muted sage */
+      font-weight: 600;
+      font-size: 1.1rem;
       cursor: pointer;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
-      transition: color 0.3s;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      transition: color 0.3s ease;
     }
     nav button:hover {
-      color: var(--accent);
+      color: #84a98c; /* brighter sage */
     }
+    /* Main content wrapper with padding for fixed header */
     main {
+      padding-top: 110px;
       max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px 80px;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
-      position: relative;
+      margin: 0 auto;
     }
     section {
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-
       display: flex;
-      align-items: flex-start;
-      gap: 30px;
+      border-bottom: 1px solid #cad2c5;
+      min-height: 600px; /* twice as long */
+      margin-bottom: 40px;
       position: relative;
-      padding-left: 60px; /* space for vertical header */
-
-      min-height: 600px; /* doubled height */
     }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Vertical headers flush left */
+    /* Vertical section headers */
     section h2 {
       writing-mode: vertical-rl;
-      text-orientation: mixed;
-      text-transform: uppercase;
-      font-size: 2rem;
-      margin: 0;
-      padding: 0 10px 0 0;
-      border-right: 2px solid var(--accent);
-      color: var(--accent);
-      user-select: none;
+      transform: rotate(180deg);
+      font-size: 2.5rem;
       font-weight: 700;
-      position: fixed;
-      left: 20px;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
-      letter-spacing: 0.15em;
-      max-height: 80vh;
-      overflow: visible;
-      top: 0;
+      color: #52796f; /* muted green */
+      margin: 0 20px 0 0;
+      padding-top: 40px;
+      text-transform: uppercase;
+      user-select: none;
+      flex-shrink: 0;
     }
-    #about h2 {
-      top: 140px;
-    }
-    #work h2 {
-      top: 440px;
-    }
-    #contact h2 {
-      top: 740px;
-    }
-    section div.content {
-      flex: 1;
-    }
-    p {
+    section .content {
+      flex-grow: 1;
+      padding-left: 30px;
       font-size: 1.1rem;
       line-height: 1.6;
-      margin-top: 0;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
-      color: var(--text-color);
+      color: #354f52; /* deep muted teal */
     }
+    /* Contact form styles */
     form {
-      max-width: 600px;
       display: flex;
       flex-direction: column;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
+      gap: 18px;
+      max-width: 500px;
     }
-    form input,
-    form textarea {
-      background-color: var(--input-bg);
-      border: 1px solid var(--input-border);
-      padding: 12px;
-      margin-bottom: 15px;
+    form input, form textarea {
+      background-color: #e6e2d3; /* light beige */
+      border: none;
       border-radius: 6px;
+      padding: 12px 15px;
       font-size: 1rem;
-      color: var(--text-color);
+      color: #2f3e46;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
       resize: vertical;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
+      transition: background-color 0.3s ease;
     }
-    form input:focus,
-    form textarea:focus {
+    form input::placeholder, form textarea::placeholder {
+      color: #94a89e;
+    }
+    form input:focus, form textarea:focus {
       outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 5px var(--input-focus-shadow);
+      background-color: #d6e0d6; /* slightly brighter on focus */
+      box-shadow: 0 0 5px #84a98c;
     }
     form button {
-      background-color: var(--accent);
-      color: white;
+      background-color: #52796f; /* muted green */
+      color: #f5f3ec;
       border: none;
       border-radius: 6px;
       padding: 14px 20px;
       font-size: 1.1rem;
+      font-weight: 700;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      align-self: flex-start;
-      font-family: 'Palatino Linotype', 'Palatino', serif;
     }
     form button:hover {
-      background-color: var(--banner-bg);
-      color: var(--text-color);
+      background-color: #354f52;
     }
-    html {
-      scroll-behavior: smooth;
+
+    /* Sparkler cursor styles */
+    #sparkler {
+      position: fixed;
+      pointer-events: none;
+      top: 0; left: 0;
+      width: 20px;
+      height: 20px;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+      z-index: 2000;
     }
-    @media (max-width: 768px) {
-      section h2 {
-        position: static;
-        writing-mode: horizontal-tb;
-        border: none;
-        margin-bottom: 10px;
-        max-height: none;
-      }
-      section {
-        padding-left: 0;
-        flex-direction: column;
-        min-height: auto;
-      }
+    .sparkle {
+      position: absolute;
+      background: radial-gradient(circle, #fff 60%, transparent 80%);
+      border-radius: 50%;
+      opacity: 0.9;
+      animation: sparkle-flicker 1s infinite alternate;
+    }
+    .sparkle:nth-child(1) {
+      width: 6px; height: 6px;
+      top: 5px; left: 2px;
+      animation-delay: 0s;
+    }
+    .sparkle:nth-child(2) {
+      width: 4px; height: 4px;
+      top: 12px; left: 8px;
+      animation-delay: 0.3s;
+    }
+    .sparkle:nth-child(3) {
+      width: 3px; height: 3px;
+      top: 10px; left: 14px;
+      animation-delay: 0.6s;
+    }
+    @keyframes sparkle-flicker {
+      0% { opacity: 0.9; transform: scale(1); }
+      100% { opacity: 0.2; transform: scale(1.3); }
     }
   </style>
 </head>
 <body>
-  <header>AMY SU</header>
+
+<header>
+  <h1>AMY SU</h1>
   <nav>
-    <button onclick="document.getElementById('about').scrollIntoView()">About</button>
-    <button onclick="document.getElementById('work').scrollIntoView()">Work</button>
-    <button onclick="document.getElementById('contact').scrollIntoView()">Contact</button>
+    <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});">ABOUT</button>
+    <button onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'});">WORK</button>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">CONTACT</button>
   </nav>
+</header>
 
-  <main>
-    <section id="about">
-      <h2>About</h2>
-      <div class="content">
-        <p>Welcome to my Japandi-inspired website! Here you'll find a clean, modern aesthetic blending Japanese minimalism with Scandinavian warmth and natural textures.</p>
-      </div>
-    </section>
+<main>
+  <section id="about">
+    <h2>ABOUT</h2>
+    <div class="content">
+      <p>Welcome! I’m Amy Su, a creative soul inspired by minimal Japandi aesthetics. My work blends simplicity with warmth and natural textures.</p>
+      <p>I focus on clean design, natural materials, and soft earthy tones to create spaces and visuals that feel calm and elegant.</p>
+    </div>
+  </section>
 
-    <section id="work">
-      <h2>Work</h2>
-      <div class="content">
-        <p>Here I showcase my projects, design work, and creative endeavors that reflect a thoughtful balance of form and function.</p>
-      </div>
-    </section>
+  <section id="work">
+    <h2>WORK</h2>
+    <div class="content">
+      <p>Here you will find a curated selection of my projects that showcase my approach to design and creativity.</p>
+      <ul>
+        <li>Project One — A minimal branding identity</li>
+        <li>Project Two — Interior design with Japandi influence</li>
+        <li>Project Three — Website design with a focus on user experience</li>
+      </ul>
+    </div>
+  </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="content">
-        <form action="https://formspree.io/f/mwpbdvqj" method="POST">
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Message"
-            rows="5"
-            required
-          ></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    </section>
-  </main>
+  <section id="contact">
+    <h2>CONTACT</h2>
+    <div class="content">
+      <form action="https://formspree.io/f/mwpbdvqj" method="POST">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="_replyto" placeholder="Email" required />
+        <textarea name="message" rows="5" placeholder="Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+</main>
 
-  <script>
-    const sections = document.querySelectorAll('section');
+<!-- Sparkler cursor -->
+<div id="sparkler">
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+</div>
 
-    function checkSections() {
-      const triggerBottom = window.innerHeight * 0.85;
+<script>
+  // Sparkler cursor follow mouse
+  const sparkler = document.getElementById('sparkler');
+  window.addEventListener('mousemove', e => {
+    sparkler.style.left = e.clientX + 'px';
+    sparkler.style.top = e.clientY + 'px';
+  });
+</script>
 
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-
-        if(sectionTop < triggerBottom) {
-          section.classList.add('visible');
-        } else {
-          section.classList.remove('visible');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', checkSections);
-    window.addEventListener('load', checkSections);
-  </script>
 </body>
 </html>
