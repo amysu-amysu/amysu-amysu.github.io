@@ -138,11 +138,43 @@
 <p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>transform: translateY(-5px);</b></span></p>
 <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></p>
 <p class="p2"><span class="s1"><b></b></span><br></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>/* Contact */</b></span></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>.contact-info {</b></span></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>margin-top: 20px;</b></span></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>font-size: 1.1rem;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>/* Contact form */</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>form {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>max-width: 600px;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>margin-top: 30px;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>input, textarea {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>width: 100%;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>padding: 14px;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>border: none;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>border-radius: 8px;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>background-color: #f0ece6;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>font-family: Georgia, serif;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>font-size: 1rem;</b></span></p>
 <p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>color: var(--indigo);</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>box-sizing: border-box;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>resize: vertical;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>input:focus, textarea:focus {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>outline: none;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>background-color: #e8e4dd;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>button[type="submit"] {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>background-color: var(--sage);</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>color: var(--white);</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>border: none;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>padding: 12px 24px;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>font-size: 1rem;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>border-radius: 25px;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>cursor: pointer;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>transition: background-color 0.3s ease;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>button[type="submit"]:hover {</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>background-color: var(--clay);</b></span></p>
 <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>}</b></span></p>
 <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/style&gt;</b></span></p>
 <p class="p1"><span class="s1"><b>&lt;/head&gt;</b></span></p>
@@ -186,12 +218,20 @@
 <p class="p2"><span class="s1"><b></b></span><br></p>
 <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;section id="contact"&gt;</b></span></p>
 <p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;h2&gt;Contact&lt;/h2&gt;</b></span></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;p&gt;Interested in working together or saying hi? I’d love to hear from you.&lt;/p&gt;</b></span></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;div class="contact-info"&gt;</b></span></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>Email: &lt;a href="mailto:hello@amysu.me"&gt;hello@amysu.me&lt;/a&gt;&lt;br /&gt;</b></span></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>Instagram: @amysu.studio&lt;br /&gt;</b></span></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>LinkedIn: &lt;a href="#"&gt;LinkedIn Profile&lt;/a&gt;</b></span></p>
-<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/div&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;p&gt;Interested in working together or just saying hello? Send me a message:&lt;/p&gt;</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;form action="https://formspree.io/f/your-form-id" method="POST"&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;label for="name"&gt;Name&lt;/label&gt;&lt;br /&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;input type="text" id="name" name="name" required /&gt;&lt;br /&gt;&lt;br /&gt;</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;label for="email"&gt;Email&lt;/label&gt;&lt;br /&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;input type="email" id="email" name="email" required /&gt;&lt;br /&gt;&lt;br /&gt;</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;label for="message"&gt;Message&lt;/label&gt;&lt;br /&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;textarea id="message" name="message" rows="6" required&gt;&lt;/textarea&gt;&lt;br /&gt;&lt;br /&gt;</b></span></p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">      </span>&lt;button type="submit"&gt;Send Message&lt;/button&gt;</b></span></p>
+<p class="p1"><span class="s1"><b><span class="Apple-converted-space">    </span>&lt;/form&gt;</b></span></p>
 <p class="p1"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/section&gt;</b></span></p>
 <p class="p1"><span class="s1"><b>&lt;/body&gt;</b></span></p>
 <p class="p1"><span class="s1"><b>&lt;/html&gt;</b></span></p>
