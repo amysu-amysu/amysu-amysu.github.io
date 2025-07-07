@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AMY SU</title>
   <style>
-    /* Neutral Japandi colors */
     :root {
       --background: #f7f5f0;
       --text-color: #333333;
@@ -26,11 +25,12 @@
       color: white;
       padding: 40px 20px;
       text-align: center;
-      font-size: 3.5rem;
+      font-size: 5rem;
       font-weight: bold;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.2em;
       user-select: none;
       font-family: 'Palatino Linotype', 'Palatino', serif;
+      text-transform: uppercase;
     }
     nav {
       display: flex;
@@ -58,18 +58,65 @@
       margin: 40px auto;
       padding: 0 20px 80px;
       font-family: 'Palatino Linotype', 'Palatino', serif;
+      position: relative;
     }
     section {
       margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      position: relative;
+      padding-left: 60px; /* create space for the vertical header */
     }
-    h2 {
-      font-size: 2.4rem;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 8px;
-      margin-bottom: 20px;
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Align vertical headers flush left of viewport */
+    section h2 {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      text-transform: uppercase;
+      font-size: 2rem;
+      margin: 0;
+      padding: 0 10px 0 0;
+      border-right: 2px solid var(--accent);
+      color: var(--accent);
+      user-select: none;
+      font-weight: 700;
+      position: fixed;
+      left: 20px;
+      /* align vertically with each section */
+      top: 0;
+      font-family: 'Palatino Linotype', 'Palatino', serif;
+      letter-spacing: 0.15em;
+      height: auto;
+      max-height: 80vh;
+      overflow: visible;
+    }
+    /* Adjust each header's vertical position */
+    #about h2 {
+      top: 140px; /* header(80) + nav(50) + margin */
+    }
+    #work h2 {
+      top: 340px;
+    }
+    #contact h2 {
+      top: 540px;
+    }
+    section div.content {
+      flex: 1;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-top: 0;
       font-family: 'Palatino Linotype', 'Palatino', serif;
     }
-    /* Contact form styling */
     form {
       max-width: 600px;
       display: flex;
@@ -111,9 +158,22 @@
       background-color: var(--banner-bg);
       color: var(--text-color);
     }
-    /* Smooth scroll */
     html {
       scroll-behavior: smooth;
+    }
+    @media (max-width: 768px) {
+      /* On smaller screens, reset fixed headers */
+      section h2 {
+        position: static;
+        writing-mode: horizontal-tb;
+        border: none;
+        margin-bottom: 10px;
+        max-height: none;
+      }
+      section {
+        padding-left: 0;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -128,38 +188,65 @@
   <main>
     <section id="about">
       <h2>About</h2>
-      <p>Welcome to my Japandi-inspired website! Here you'll find a clean, modern aesthetic blending Japanese minimalism with Scandinavian warmth and natural textures.</p>
+      <div class="content">
+        <p>Welcome to my Japandi-inspired website! Here you'll find a clean, modern aesthetic blending Japanese minimalism with Scandinavian warmth and natural textures.</p>
+      </div>
     </section>
 
     <section id="work">
       <h2>Work</h2>
-      <p>Here I showcase my projects, design work, and creative endeavors that reflect a thoughtful balance of form and function.</p>
+      <div class="content">
+        <p>Here I showcase my projects, design work, and creative endeavors that reflect a thoughtful balance of form and function.</p>
+      </div>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <form action="https://formspree.io/f/mwpbdvqj" method="POST">
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Message"
-          rows="5"
-          required
-        ></textarea>
-        <button type="submit">Send</button>
-      </form>
+      <div class="content">
+        <form action="https://formspree.io/f/mwpbdvqj" method="POST">
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Message"
+            rows="5"
+            required
+          ></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </section>
   </main>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+
+    function checkSections() {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if(sectionTop < triggerBottom) {
+          section.classList.add('visible');
+        } else {
+          section.classList.remove('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkSections);
+    window.addEventListener('load', checkSections);
+  </script>
 </body>
 </html>
