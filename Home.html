@@ -3,18 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home</title>
+  <title>Home - AMY SU</title>
   <style>
     body {
+      margin: 0;
       font-family: Georgia, serif;
-      padding: 40px;
-      background-color: #fff;
-      color: #333;
+      background-color: #000;
+      color: white;
+    }
+    header {
+      background-color: #111;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid white;
+    }
+    .banner {
+      font-size: 3.5rem;
+      font-weight: bold;
+      letter-spacing: 4px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin-left: 30px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: white;
+      color: black;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to the Home Page!</h1>
-  <p>This is where you can add your main website content.</p>
-</body>
-</html>
+  <header>
+    <div class="banner">AMY SU</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Optional sections for the tabs -->
+  <section id="about" style="padding: 40px;">
+    <h2>About</h2>
+    <p>This is the About section. Add your content here.</p>
+  </section>
+
+  <section id="work" style="padding: 40px;">
+    <h2>Work</h2>
+    <p>This is the Work section. Add your portfolio or p
