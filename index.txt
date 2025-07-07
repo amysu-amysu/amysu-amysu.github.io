@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hello</title>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Georgia, serif;
+    }
+    button {
+      font-family: Georgia, serif;
+      font-size: 6rem;
+      color: white;
+      background-color: transparent;
+      border: 2px solid white;
+      padding: 20px 60px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    button:hover {
+      background-color: white;
+      color: black;
+      transition: 0.3s;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="home.html">
+    <button>Hello</button>
+  </a>
+</body>
+</html>
