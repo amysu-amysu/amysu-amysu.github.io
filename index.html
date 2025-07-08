@@ -22,7 +22,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Intro section */
     #intro {
       background-color: #000;
       color: #fff;
@@ -126,8 +125,7 @@
     }
 
     section h2 span {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
+      display: block;
       font-size: 3.2rem;
       margin-bottom: 0.2rem;
     }
@@ -136,10 +134,10 @@
       content: '';
       position: absolute;
       left: -2.5rem;
-      top: 0;
-      bottom: 0;
+      top: 5%;
+      height: 90%;
       width: 6rem;
-      background-color: #B3472F; /* deeper terracotta */
+      background-color: #B3472F;
       z-index: -1;
       border-radius: 8px;
     }
@@ -173,20 +171,20 @@
       line-height: 1.6;
     }
 
-    /* Work section */
     #work .squares {
       display: flex;
-      gap: 2rem;
+      gap: 3rem;
       width: 100%;
-      justify-content: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
     }
 
     .square-btn {
       flex: 1;
-      max-width: 300px;
+      max-width: 400px;
       aspect-ratio: 1 / 1;
       border: none;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       font-weight: bold;
       cursor: pointer;
       border-radius: 8px;
@@ -199,7 +197,7 @@
     }
 
     .square-right {
-      background-color: #B3472F; /* deeper terracotta */
+      background-color: #B3472F;
       color: white;
     }
 
@@ -212,7 +210,6 @@
       text-align: center;
     }
 
-    /* Contact form */
     #contact .content {
       flex-direction: column;
     }
@@ -283,6 +280,11 @@
         flex-direction: column;
         font-size: 3rem;
         gap: 1rem;
+      }
+
+      .square-btn {
+        max-width: 90%;
+        font-size: 1.2rem;
       }
     }
   </style>
