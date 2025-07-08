@@ -19,7 +19,6 @@
       overflow: hidden;
     }
 
-    /* INTRO SCREEN */
     #intro {
       background-color: #000;
       color: #fff;
@@ -52,7 +51,6 @@
 
     #hello-button:hover {
       background-color: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
     }
 
     .particle {
@@ -91,7 +89,7 @@
       align-items: center;
       padding: 2rem 3rem;
       text-transform: uppercase;
-      font-size: 4rem;
+      font-size: 4.5rem;
       font-weight: bold;
       letter-spacing: 0.1em;
     }
@@ -109,7 +107,6 @@
       text-transform: uppercase;
       cursor: pointer;
       font-weight: 600;
-      transition: 0.3s;
     }
 
     nav button:hover {
@@ -139,11 +136,24 @@
       margin-right: 2rem;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: flex-start;
-      text-align: center;
       letter-spacing: 0.2em;
       line-height: 1.4;
+      position: relative;
+      z-index: 2;
+    }
+
+    section h2::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 0;
+      bottom: 0;
+      width: 4rem;
+      background-color: #D37C5A; /* terracotta */
+      z-index: -1;
+      border-radius: 8px;
     }
 
     section .content {
@@ -153,8 +163,7 @@
       color: #4A4A4A;
       display: flex;
       align-items: center;
-      gap: 4.5rem;
-      max-width: 1000px;
+      gap: 4rem;
     }
 
     #about img {
@@ -171,8 +180,43 @@
       transform: rotateY(180deg);
     }
 
-    #about .about-text {
+    .about-text {
       flex: 1;
+    }
+
+    /* WORK SECTION STYLES */
+    #work .squares {
+      display: flex;
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .square-btn {
+      flex: 1;
+      aspect-ratio: 1 / 1;
+      border: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .square-left {
+      background-color: #B0B3AA;
+      color: #2E3C2F;
+    }
+
+    .square-right {
+      background-color: #D37C5A; /* terracotta */
+      color: white;
+    }
+
+    .work-description {
+      display: none;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #333;
     }
 
     form {
@@ -191,14 +235,6 @@
       font-size: 1rem;
       color: #2E3C2F;
       resize: none;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
-    }
-
-    form input:focus,
-    form textarea:focus {
-      outline: none;
-      box-shadow: inset 0 0 8px #8D8A77;
-      background-color: #F5F3EE;
     }
 
     form button {
@@ -213,43 +249,38 @@
       text-transform: uppercase;
     }
 
-    form button:hover {
-      background-color: #4A6B42;
-    }
-
     @media (max-width: 768px) {
       section {
         flex-direction: column;
-        padding: 4rem 1.5rem 6rem 1.5rem;
       }
 
       section h2 {
         flex-direction: row;
         font-size: 2rem;
-        letter-spacing: 0.1em;
         margin-bottom: 1rem;
       }
 
       #about .content {
         flex-direction: column;
-        gap: 2rem;
       }
 
       #about img {
         width: 250px;
         height: 250px;
       }
+
+      #work .squares {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Intro Section -->
   <section id="intro">
     <button id="hello-button" onclick="explodeParticles(event)">HELLO</button>
   </section>
 
-  <!-- Main Site -->
   <div id="main-content">
     <header>
       AMY SU
@@ -263,53 +294,99 @@
     <main>
       <section id="about">
         <h2>
-          <span>A</span>
-          <span>B</span>
-          <span>O</span>
-          <span>U</span>
-          <span>T</span>
+          <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
         </h2>
         <div class="content">
           <img id="about-img" src="https://via.placeholder.com/350x350?text=Photo+1" alt="About Image">
           <div class="about-text">
-            <p>
-              Amy Su is a multidisciplinary designer focused on minimalism, emotion, and cultural narrative. With roots in modern aesthetics and traditional textures, her work bridges the old and the new.
-            </p>
+            <p>Amy Su is a multidisciplinary designer focused on minimalism, emotion, and cultural narrative. With roots in modern aesthetics and traditional textures, her work bridges the old and the new.</p>
           </div>
         </div>
       </section>
 
       <section id="work">
         <h2>
-          <span>W</span>
-          <span>O</span>
-          <span>R</span>
-          <span>K</span>
+          <span>W</span><span>O</span><span>R</span><span>K</span>
         </h2>
         <div class="content">
-          <p>
-            A showcase of projects, both conceptual and commercial, will go here. Each piece will reflect a commitment to simplicity and depth, inspired by natural palettes and slow design.
-          </p>
+          <div class="squares">
+            <button class="square-btn square-left" onclick="toggleWorkContent('left')">Project A</button>
+            <button class="square-btn square-right" onclick="toggleWorkContent('right')">Project B</button>
+          </div>
+          <div class="work-description" id="work-desc"></div>
         </div>
       </section>
 
       <section id="contact">
         <h2>
-          <span>C</span>
-          <span>O</span>
-          <span>N</span>
-          <span>T</span>
-          <span>A</span>
-          <span>C</span>
-      <span>T</span>
-    </h2>
-    <div class="content">
-      <form action="https://formspree.io/f/mwpbdvqj" method="POST">
-        <input type="text" name="name" placeholder="Name" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" rows="5" placeholder="Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </section>
-</main>
+          <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+        </h2>
+        <div class="content">
+          <form action="https://formspree.io/f/mwpbdvqj" method="POST">
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <textarea name="message" rows="5" placeholder="Message" required></textarea>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function explodeParticles(e) {
+      const button = e.target;
+      for (let i = 0; i < 60; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 200 + 50;
+        particle.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+        particle.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+        particle.style.left = `${e.clientX}px`;
+        particle.style.top = `${e.clientY}px`;
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 1000);
+      }
+
+      document.getElementById('intro').style.opacity = '0';
+      document.body.style.overflow = 'auto';
+      setTimeout(() => {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('main-content').classList.add('visible');
+      }, 1000);
+    }
+
+    const aboutImg = document.getElementById('about-img');
+    const img1 = "https://via.placeholder.com/350x350?text=Photo+1";
+    const img2 = "https://via.placeholder.com/350x350?text=Photo+2";
+
+    aboutImg.addEventListener('mouseenter', () => {
+      aboutImg.classList.add('spin');
+      setTimeout(() => {
+        aboutImg.src = aboutImg.src === img1 ? img2 : img1;
+        aboutImg.classList.remove('spin');
+      }, 1000);
+    });
+
+    let workView = 'squares';
+    function toggleWorkContent(which) {
+      const squares = document.querySelector('#work .squares');
+      const desc = document.getElementById('work-desc');
+
+      if (workView === 'squares') {
+        squares.style.display = 'none';
+        desc.style.display = 'block';
+        desc.innerHTML = which === 'left'
+          ? '<p>This is a detailed description of Project A. It includes elegant solutions using timeless principles of design.</p>'
+          : '<p>This is a detailed description of Project B. A modern take on interactive storytelling through digital mediums.</p>';
+        workView = 'desc';
+      } else {
+        squares.style.display = 'flex';
+        desc.style.display = 'none';
+        workView = 'squares';
+      }
+    }
+  </script>
+</body>
+</html>
