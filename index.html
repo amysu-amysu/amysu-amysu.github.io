@@ -5,26 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AMY SU</title>
 
-  <!-- Google Fonts: Libre Baskerville -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet" />
 
   <style>
-    /* Reset & base */
     * {
       box-sizing: border-box;
-    }
-    body {
       margin: 0;
-      font-family: 'Libre Baskerville', serif;
-      background: #F5F3EE; /* light beige background */
-      color: #2E3C2F; /* dark forest green text */
-      cursor: default;
-      overflow-x: hidden;
+      padding: 0;
     }
 
-    /* Banner */
+    body {
+      font-family: 'Libre Baskerville', serif;
+      background: #F5F3EE;
+      color: #2E3C2F;
+      overflow: hidden;
+    }
+
+    /* INTRO SCREEN */
+    #intro {
+      background-color: #000;
+      color: #fff;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+      transition: opacity 1s ease;
+    }
+
+    #hello-button {
+      font-size: 5rem;
+      font-weight: bold;
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hello-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Gold Dust Explosion */
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
+      border-radius: 50%;
+      animation: explode 1s ease forwards;
+      pointer-events: none;
+    }
+
+    @keyframes explode {
+      to {
+        transform: translate(var(--dx), var(--dy)) scale(0.6);
+        opacity: 0;
+      }
+    }
+
+    #main-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #main-content.visible {
+      display: block;
+      opacity: 1;
+    }
+
     header {
-      background-color: #2E3C2F; /* Japanese forest green */
+      background-color: #2E3C2F;
       color: #F5F3EE;
       display: flex;
       justify-content: space-between;
@@ -34,13 +98,13 @@
       font-size: 3rem;
       font-weight: 700;
       letter-spacing: 0.15em;
-      user-select: none;
     }
 
     nav {
       display: flex;
       gap: 2rem;
     }
+
     nav button {
       background: none;
       border: none;
@@ -49,17 +113,16 @@
       text-transform: uppercase;
       cursor: pointer;
       font-weight: 600;
-      padding: 0.3rem 0.6rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      border-radius: 4px;
-      font-family: 'Libre Baskerville', serif;
-    }
-    nav button:hover {
-      background-color: #8D8A77; /* subtle clay accent */
-      color: #2E3C2F;
+      transition: 0.3s;
     }
 
-    /* Main layout */
+    nav button:hover {
+      background-color: #8D8A77;
+      color: #2E3C2F;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
     main {
       display: flex;
       flex-direction: column;
@@ -69,11 +132,10 @@
       display: flex;
       padding: 6rem 3rem 8rem 6rem;
       border-bottom: 1px solid #ccc;
-      min-height: 500px; /* longer sections */
+      min-height: 600px;
       position: relative;
     }
 
-    /* Vertical headers */
     section h2 {
       writing-mode: vertical-lr;
       text-transform: uppercase;
@@ -81,70 +143,65 @@
       font-weight: 700;
       color: #2E3C2F;
       margin: 0 2rem 0 0;
-      user-select: none;
       letter-spacing: 0.2em;
       align-self: flex-start;
     }
 
-    /* Content next to vertical header */
     section .content {
       flex: 1;
       font-size: 1.1rem;
       line-height: 1.6;
-      color: #4A4A4A; /* softer text color */
-      max-width: 800px;
+      color: #4A4A4A;
       display: flex;
       align-items: center;
-      gap: 3rem; /* added bigger gap for all sections */
+      gap: 4.5rem;
+      max-width: 1000px;
     }
 
-    /* About section: image + text */
-    #about .content {
-      /* override gap for about */
-      gap: 4.5rem; /* bigger gap for image and text */
-    }
     #about img {
-      width: 350px; /* ~1.4x of 250 */
-      height: 350px;
+      width: 420px;
+      height: 420px;
       object-fit: cover;
       border-radius: 12px;
       cursor: pointer;
       transition: transform 1s ease;
       flex-shrink: 0;
     }
+
     #about img.spin {
       transform: rotateY(180deg);
     }
+
     #about .about-text {
       flex: 1;
     }
 
-    /* Contact form */
     form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       max-width: 450px;
     }
+
     form input,
     form textarea {
-      background-color: #E6E3D3; /* very light beige */
+      background-color: #E6E3D3;
       border: none;
       border-radius: 6px;
       padding: 0.75rem 1rem;
-      font-family: 'Libre Baskerville', serif;
       font-size: 1rem;
       color: #2E3C2F;
       resize: none;
       box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
-      transition: box-shadow 0.3s ease;
     }
+
     form input:focus,
     form textarea:focus {
       outline: none;
-      box-shadow: inset 0 0 8px #8D8A77; /* clay accent glow */
+      box-shadow: inset 0 0 8px #8D8A77;
       background-color: #F5F3EE;
     }
+
     form button {
       background-color: #2E3C2F;
       color: #F5F3EE;
@@ -155,78 +212,30 @@
       font-weight: 700;
       cursor: pointer;
       text-transform: uppercase;
-      transition: background-color 0.3s ease;
-      font-family: 'Libre Baskerville', serif;
     }
+
     form button:hover {
-      background-color: #4A6B42; /* lighter forest green */
+      background-color: #4A6B42;
     }
 
-    /* Sparkler cursor */
-    #sparkler {
-      position: fixed;
-      pointer-events: none;
-      top: 0;
-      left: 0;
-      width: 20px;
-      height: 20px;
-      mix-blend-mode: screen;
-      z-index: 9999;
-      user-select: none;
-    }
-    .sparkle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      background: #8D8A77;
-      border-radius: 50%;
-      filter: drop-shadow(0 0 3px #8D8A77);
-      animation: sparkleAnim 1.5s infinite ease-in-out alternate;
-      opacity: 0.8;
-    }
-    .sparkle:nth-child(1) {
-      top: 0;
-      left: 50%;
-      animation-delay: 0s;
-    }
-    .sparkle:nth-child(2) {
-      top: 50%;
-      left: 100%;
-      animation-delay: 0.5s;
-    }
-    .sparkle:nth-child(3) {
-      top: 100%;
-      left: 50%;
-      animation-delay: 1s;
-    }
-    @keyframes sparkleAnim {
-      0% {
-        transform: scale(1);
-        opacity: 0.8;
-      }
-      100% {
-        transform: scale(1.6);
-        opacity: 0.2;
-      }
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
       section {
         flex-direction: column;
         padding: 4rem 1.5rem 6rem 1.5rem;
       }
+
       section h2 {
         writing-mode: horizontal-tb;
         font-size: 2.5rem;
         margin-bottom: 1rem;
         letter-spacing: 0.15em;
       }
+
       #about .content {
         flex-direction: column;
-        align-items: center;
         gap: 2rem;
       }
+
       #about img {
         width: 250px;
         height: 250px;
@@ -235,55 +244,85 @@
   </style>
 </head>
 <body>
-  <header>
-    AMY SU
-    <nav>
-      <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">ABOUT</button>
-      <button onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">WORK</button>
-      <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">CONTACT</button>
-    </nav>
-  </header>
 
-  <main>
-    <section id="about">
-      <h2>A<br />B<br />O<br />U<br />T</h2>
-      <div class="content">
-        <img id="about-img" src="https://via.placeholder.com/350x350?text=Photo+1" alt="Amy Su Photo" />
-        <div class="about-text">
-          <p>Hello! I'm Amy, a creative designer with a passion for Japandi minimalism. I combine modern aesthetics with warm natural tones to craft elegant experiences. Welcome to my portfolio.</p>
+  <!-- Intro Section -->
+  <section id="intro">
+    <button id="hello-button" onclick="explodeParticles(event)">HELLO</button>
+  </section>
+
+  <!-- Main Site -->
+  <div id="main-content">
+    <header>
+      AMY SU
+      <nav>
+        <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">ABOUT</button>
+        <button onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">WORK</button>
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">CONTACT</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about">
+        <h2>A<br>B<br>O<br>U<br>T</h2>
+        <div class="content">
+          <img id="about-img" src="https://via.placeholder.com/350x350?text=Photo+1" alt="About Image">
+          <div class="about-text">
+            <p>
+              Amy Su is a multidisciplinary designer focused on minimalism, emotion, and cultural narrative. With roots in modern aesthetics and traditional textures, her work bridges the old and the new.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="work">
-      <h2>W<br />O<br />R<br />K</h2>
-      <div class="content">
-        <p>Here you'll find some of my recent projects, blending clean lines with organic elements. I specialize in web design, branding, and illustration that reflect balance and simplicity.</p>
-      </div>
-    </section>
+      <section id="work">
+        <h2>W<br>O<br>R<br>K</h2>
+        <div class="content">
+          <p>
+            A showcase of projects, both conceptual and commercial, will go here. Each piece will reflect a commitment to simplicity and depth, inspired by natural palettes and slow design.
+          </p>
+        </div>
+      </section>
 
-    <section id="contact">
-      <h2>C<br />O<br />N<br />T<br />A<br />C<br />T</h2>
-      <div class="content">
-        <form action="https://formspree.io/f/mwpbdvqj" method="POST">
-          <input type="text" name="name" placeholder="Name" required />
-          <input type="email" name="_replyto" placeholder="Email" required />
-          <textarea name="message" rows="5" placeholder="Message" required></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- Sparkler cursor -->
-  <div id="sparkler">
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
+      <section id="contact">
+        <h2>C<br>O<br>N<br>T<br>A<br>C<br>T</h2>
+        <div class="content">
+          <form action="https://formspree.io/f/mwpbdvqj" method="POST">
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="_replyto" placeholder="Email" required />
+            <textarea name="message" rows="5" placeholder="Message" required></textarea>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
   </div>
 
   <script>
-    // About image spin and swap on hover
+    function explodeParticles(e) {
+      const button = e.target;
+      for (let i = 0; i < 60; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 200 + 50;
+        particle.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+        particle.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+        particle.style.left = `${e.clientX}px`;
+        particle.style.top = `${e.clientY}px`;
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 1000);
+      }
+
+      // Fade out intro and show main
+      document.getElementById('intro').style.opacity = '0';
+      document.body.style.overflow = 'auto';
+      setTimeout(() => {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('main-content').classList.add('visible');
+      }, 1000);
+    }
+
+    // Image hover spin & swap
     const aboutImg = document.getElementById('about-img');
     const img1 = "https://via.placeholder.com/350x350?text=Photo+1";
     const img2 = "https://via.placeholder.com/350x350?text=Photo+2";
@@ -294,14 +333,6 @@
         aboutImg.src = aboutImg.src === img1 ? img2 : img1;
         aboutImg.classList.remove('spin');
       }, 1000);
-    });
-
-    // Sparkler cursor
-    const sparkler = document.getElementById('sparkler');
-
-    window.addEventListener('mousemove', e => {
-      sparkler.style.top = e.clientY + 'px';
-      sparkler.style.left = e.clientX + 'px';
     });
   </script>
 </body>
